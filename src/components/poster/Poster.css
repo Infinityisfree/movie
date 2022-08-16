@@ -74,18 +74,30 @@
     overflow: hidden;
 }
 
+.Poster-element:hover {
+    transform: scale(1.1);
+}
 .Poster-element {
     position: relative;
+    width: 200px;
+    padding: 40px 20px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
 }
 
 .Poster-img {
     width: 200px;
     height: auto;
+    box-shadow: 0px 4px 8px 1px #000;
+    transition: all .2s ease-in-out;
+}
+.Poster-element:hover .Poster-img {
+    box-shadow: 0px 10px 14px 0px #00000096;
 }
 
 .Poster-average {
     position: absolute;
-    bottom: -5px;
+    bottom: 34px;
     right: 10px;
     color: #000;
     background-color: #ffef11;

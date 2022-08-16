@@ -1,5 +1,12 @@
-
+import { Swiper, SwiperSlide } from 'swiper/react';
 import './Poster.css'
+import 'swiper/css';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 function Poster(props) {
 
@@ -24,19 +31,41 @@ function Poster(props) {
                     <div className='Poster-data'><span className='Poster-data-title'>Vote count:</span> <span className='Poster-data-accent'>{movies[index].vote_count}</span></div>
                     
                     <div className='Poster-carusel'>
-                        {movies.map((movie, key) => (
-                            <a href='#'>
-                               <div className='Poster-element'>
+                    <Swiper  loop = {true} modules={[Navigation]} navigation spaceBetween={60} slidesPerView={5}>
+
+                        {movies.map((movie, index) => (
+
+                            <SwiperSlide key={index}>
+                                <div className='Poster-element'>
                                     <img className='Poster-img' src={'https://image.tmdb.org/t/p/w220_and_h330_face'+ movie.poster_path} alt=''/>
                                     <div className='Poster-average'>{movie.vote_average}</div>
                                 </div>
-                            </a>
-                        ))}
-                    </div>
+                            </SwiperSlide> 
 
+                        ))}
+
+                    </Swiper>
+                    </div>
                 </div>
             </div>
         </div>
+        <Swiper
+      // install Swiper modules
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      spaceBetween={50}
+      slidesPerView={3}
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+    >
+      <SwiperSlide>Slide 1</SwiperSlide>
+      <SwiperSlide>Slide 2</SwiperSlide>
+      <SwiperSlide>Slide 3</SwiperSlide>
+      <SwiperSlide>Slide 4</SwiperSlide>
+      ...
+    </Swiper>
     </div>
   );
 }
